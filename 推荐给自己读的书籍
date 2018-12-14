@@ -1,0 +1,259 @@
+Python源码剖析
+《Python源码剖析》是2008年06月电子工业出版社出版的图书，作者是陈儒。
+书    名
+Python源码剖析——深度探索动态语言核心技术
+作    者
+陈儒
+ISBN
+9787121068744
+类    别
+ 图书 >> 计算机/网络 >> 程序设计 >> 其他
+定    价
+￥69.80
+出版社
+电子工业出版社
+出版时间
+2008-6-1
+目录
+1 内容简介
+2 编辑推荐
+3 作者简介
+4 作品目录
+ 
+内容简介
+编辑
+该书作为主流的动态语言，Python不仅简单易学、移植性好，而且拥有强大丰富的库的支持。此外，Python强大的可扩展性，让开发人员既可以非常容易地利用C/C++编写Python的扩展模块，还能将Python嵌入到C/C++程序中，为自己的系统添加动态扩展和动态编程的能力。 
+为了更好地利用Python语言，无论是使用Python语言本身，还是将Python与C/C++交互使用，深刻理解Python的运行原理都是非常重要的。本书以CPython为研究对象，在C代码一级，深入细致地剖析了Python的实现。书中不仅包括了对大量Python内置对象的剖析，更将大量的篇幅用于对Python虚拟机及Python高级特性的剖析。通过此书，读者能够透彻地理解Python中的一般表达式、控制结构、异常机制、类机制、多线程机制、模块的动态加载机制、内存管理机制等核心技术的运行原理，同时，本书所揭示的动态语言的核心技术对于理解其他动态语言，如Javascript、Ruby等也有较大的参考价值。
+本书适合于Python程序员、动态语言爱好者、C程序员阅读。
+ 
+编辑推荐
+本书的主要特点：
+一本深入剖析Python具体实现的著作
+内容新鲜，采用最新的Python语言版本（25）
+大量的图表形象地展示Python内部的运作机理
+在原理介绍的同时，带领读者一起动手对Python虚拟机进行改造
+完整覆盖Python所有的核心议题，深刻揭示Python与C/C++之间如何互动
+作者简介
+陈儒，计算机科学与工程专业硕士，问天（北京）信息技术有限公司技术负责人，致力于信息检索方向的研究与开发。
+作品目录
+第0章 PYTHON源码剖析--编译PYTHON
+0.1 PYTHON总体架构
+0.2 PYTHON源代码的组织
+0.3 WINDOWS环境下编译PYTHON
+0.4 UNIX/LINUX环境下编译PYTHON
+0.5 修改PYTHON源代码
+0.6 通往PYTHON之路
+0.7 一些注意事项
+第1部分 PYTHON内建对象
+第1章 PYTHON对象初探
+1.1 PYTHON内的对象
+1.1.1 对象机制的基石——PyObject
+1.1.2 定长对象和变长对象
+1.2 类型对象
+1.2.1 对象的创建
+1.2.2 对象的行为
+1.2.3 类型的类型
+1.3 PYTHON对象的多态性
+1.4 引用计数
+1.5 PYTHON对象的分类
+第2章 PYTHON中的整数对象
+2.1 初识PYINTOBJECT对象
+2.2 PYINTOBJECT对象的创建和维护
+2.2.1 对象创建的3种途径
+2.2.2 小整数对象
+2.2.3 大整数对象
+2.2.4 添加和删除
+2.2.5 小整数对象池的初始化
+2.3 HACK PYINTOBJECT
+第3章 PYTHON中的字符串对象
+3.1 PYSTRINGOBJECT与PYSTRING_TYPE
+3.2 创建PYSTRINGOBJECT对象
+3.3 字符串对象的INTERN机制
+3.4 字符缓冲池
+3.5 PYSTRINGOBJECT效率相关问题
+3.6 HACK PYSTRINGOBJECT
+第4章 PYTHON中的LIST对象
+4.1 PYLISTOBJECT对象
+4.2 PYLISTOBJECT对象的创建与维护
+4.2.1 创建对象
+4.2.2 设置元素
+4.2.3 插入元素
+4.2.4 删除元素
+4.3 PYLISTOBJECT对象缓冲池
+4.4 HACK PYLISTOBJECT
+第5章 PYTHON中的DICT对象
+5.1 散列表概述
+5.2 PYDICTOBJECT
+5.2.1 关联容器的entry
+5.2.2 关联容器的实现
+5.3 PYDICTOBJECT的创建和维护
+5.3.1 PyDictObject对象创建
+5.3.2 PyDictObject中的元素搜索
+5.3.3 插入与删除
+5.3.4 操作示例
+5.4 PYDICTOBJECT对象缓冲池
+5.5 HACK PYDICTOBJECT
+第6章 最简单的PYTHON模拟——SMALL PYTHON
+6.1 SMALL PYTHON
+6.2 对象机制
+6.3 解释过程
+6.4 交互式环境
+第2部分 PYTHON虚拟机
+第7章 PYTHON的编译结果--CODE对象与PYC文件
+7.1 PYTHON程序的执行过程
+7.2 PYTHON编译器的编译结果--PYCODEOBJECT对象
+7.2.1 PyCodeObject对象与pyc文件
+7.2.2 Python源码中的PyCodeObject
+7.2.3 pyc文件
+7.2.4 在Python中访问PyCodeObject对象
+7.3 PYC文件的生成
+7.3.1 创建pyc文件的具体过程
+7.3.2 向pyc文件写入字符串
+7.3.3 一个PyCodeObject，多个PyCodeObject
+7.4 PYTHON的字节码
+7.5 解析PYC文件
+第8章 PYTHON虚拟机框架
+8.1 PYTHON虚拟机中的执行环境
+8.1.1 Python源码中的PyFrameObject
+8.1.2 PyFrameObject中的动态内存空间
+8.1.3 在Python中访问PyFrameObject对象
+8.2 名字、作用域和名字空间
+8.2.1 Python程序的基础结构——module
+8.2.2 约束与名字空间
+8.2.3 作用域与名字空间
+8.3 PYTHON虚拟机的运行框架
+8.4 PYTHON运行时环境初探
+第9章 PYTHON虚拟机中的一般表达式
+9.1 简单内建对象的创建
+9.2 复杂内建对象的创建
+9.3 其他一般表达式
+9.3.1 符号搜索
+9.3.2 数值运算
+9.3.3 信息输出
+第10章 PYTHON虚拟机中的控制流
+10.1 PYTHON虚拟机中的IF控制流
+10.1.1 研究对象--if_control.py
+10.1.2 比较操作
+10.1.3 指令跳跃
+10.2 PYTHON虚拟机中的FOR循环控制流
+10.2.1 研究对象——for_control.py
+10.2.2 循环控制结构的初始化
+10.2.3 迭代控制
+10.2.4 终止迭代
+10.3 PYTHON虚拟机中的WHILE循环控制结构
+10.3.1 研究对象——while_control.py
+10.3.2 循环终止
+10.3.3 循环的正常运转
+10.3.4 循环流程改变指令之continue
+10.3.5 循环流程改变指令之break
+10.4 PYTHON虚拟机中的异常控制流
+10.4.1 Python中的异常机制
+10.4.2 Python中的异常控制语义结构
+第11章 PYTHON虚拟机中的函数机制
+11.1 PYFUNCTIONOBJECT对象
+11.2 无参函数调用
+11.2.1 函数对象的创建
+11.2.2 函数调用
+11.3 函数执行时的名字空间
+11.4 函数参数的实现
+11.4.1 参数类别
+11.4.2 位置参数的传递
+11.4.3 位置参数的访问
+11.4.4 位置参数的默认值
+11.4.5 扩展位置参数和扩展键参数
+11.5 函数中局部变量的访问
+11.6 嵌套函数、闭包与DECORATOR
+11.6.1 实现闭包的基石
+11.6.2 闭包的实现
+11.6.3 Decorator
+第12章 PYTHON虚拟机中的类机制
+12.1 PYTHON中的对象模型
+12.1.1 对象间的关系
+12.1.2 和
+12.2 从TYPE对象到CLASS对象
+12.2.1 处理基类和type信息
+12.2.2 处理基类列表
+12.2.3 填充tp_dict
+12.3 用户自定义CLASS
+12.3.1 创建class对象
+12.4 从CLASS对象到INSTANCE对象
+12.5 访问INSTANCE对象中的属性
+12.5.1 instance对象中的__dict__
+12.5.2 再论descriptor
+12.5.3 函数变身
+12.5.4 无参函数的调用
+12.5.5 带参函数的调用
+12.5.6 Bound Method和Unbound Method
+12.6 千变万化的DESCRIPTOR
+第3部分 PYTHON高级话题
+第13章 PYTHON运行环境初始化
+13.1 线程环境初始化
+13.1.1 线程模型回顾
+13.1.2 初始化线程环境
+13.2 系统MODULE初始化
+13.2.1 创建__builtin__ module
+13.2.2 创建sys module
+13.2.3 创建__main__ module
+13.2.4 设置site-specific的module的搜索路径
+13.3 激活PYTHON虚拟机
+13.3.1 交互式运行方式
+13.3.2 脚本文件运行方式
+13.3.3 启动虚拟机
+13.3.4 名字空间
+第14章 PYTHON模块的动态加载机制
+14.1 IMPORT前奏曲
+14.2 PYTHON中IMPORT机制的黑盒探测
+14.2.1 标准import
+14.2.2 嵌套import
+14.2.3 import package
+14.2.4 from与import
+14.2.5 符号重命名
+14.2.6 符号的销毁与重载
+14.3 IMPORT机制的实现
+14.3.1 解析module/package树状结构
+14.3.2 加载module/pakcage
+14.3.3 from与import
+14.4 PYTHON中的IMPORT操作
+14.4.1 import module
+14.4.2 import package
+14.4.3 from & import
+14.4.4 import & as
+14.4.5 reload
+14.4.6 内建module：imp
+14.5 与MODULE有关的名字空间问题
+第15章 PYTHON多线程机制
+15.1 GIL与线程调度
+15.2 初见PYTHON THREAD
+15.3 PYTHON线程的创建
+15.3.1 建立多线程环境
+15.3.2 创建线程
+15.4 PYTHON线程的调度
+15.4.1 标准调度
+15.4.2 阻塞调度
+15.5 PYTHON子线程的销毁
+15.6 PYTHON线程的用户级互斥与同步
+15.6.1 用户级互斥与同步
+15.6.2 Lock对象
+15.7 高级线程库——THREADING
+15.7.1 Threading Module概述
+15.7.2 Threading的线程同步工具
+15.7.3 Threading中的Thread
+第16章 PYTHON的内存管理机制
+16.1 内存管理架构
+16.2 小块空间的内存池
+16.2.1 Block
+16.2.2 Pool
+16.2.3 arena
+16.2.4 内存池
+16.3 循环引用的垃圾收集
+16.3.1 引用计数与垃圾收集
+16.3.2 三色标记模型
+16.4 PYTHON中的垃圾收集
+16.4.1 可收集对象链表
+16.4.2 分代的垃圾收集
+16.4.3 Python中的标记-清除方法
+16.4.4 垃圾收集全景
+16.4.5 Python中的gc模块
+16.4.6 总结
+ 
+原文来源-百度文科
